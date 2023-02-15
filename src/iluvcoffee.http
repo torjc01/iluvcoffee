@@ -1,0 +1,79 @@
+#/*
+#* Copyright (c) 2022 Gouvernement du Québec
+#* Auteur: Julio Cesar Torres 
+#* SPDX-License-Identifier: LiLiQ-R-v.1.1
+#* License-Filename: /LICENSE
+#*/
+##############################################################
+# Requetes http pour l'émeteur d'attestations d'accès virtuel
+##############################################################
+# Avant usage, il faut renseigner les champs X-API-Key des 
+# endpoints qui seront utilisés. 
+# 
+### Définition des variables globales 
+@hostname = http://localhost:3000
+@id = 2
+
+# ============================================================================
+#    Entity: Coffee
+#    Endpoint: /coffee
+# ============================================================================
+
+####
+#### Selects all coffees 
+#### 
+GET {{hostname}}/coffees HTTP/1.1
+X-API-Key: 
+Content-Type: application/json
+
+
+####
+#### Selects all coffees with pagination
+#### 
+GET {{hostname}}/coffees?limit=50&offset=150 HTTP/1.1
+X-API-Key: 
+Content-Type: application/json
+
+
+####
+#### Selects a coffee identified by id 
+#### 
+GET {{hostname}}/coffees/{{id}} HTTP/1.1
+X-API-Key: 
+Content-Type: application/json
+
+####
+#### Create a new coffee 
+#### 
+POST {{hostname}}/coffees HTTP/1.1
+X-API-Key: 
+Content-Type: application/json
+
+{
+    //"id": 2,
+    "name": "Cafe Caesar", 
+    "brand": "Cafe Romano", 
+    "flavors": ["coffee", "maple", "syrup"]
+    //"isEnabled": true
+}
+
+####
+#### Updates a new coffee 
+#### 
+PATCH {{hostname}}/coffees/{{id}} HTTP/1.1
+X-API-Key: 
+Content-Type: application/json
+
+{
+    "name": "Cafe Caesar", 
+    "brand": "Cafe Romano", 
+    "flavors": ["coffee", "maple", "syrup"]
+}
+
+
+####
+#### Create a new coffee 
+#### 
+DELETE {{hostname}}/coffees/{{id}} HTTP/1.1
+X-API-Key: 
+Content-Type: application/json
