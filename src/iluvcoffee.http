@@ -12,7 +12,7 @@
 # 
 ### Définition des variables globales 
 @hostname = http://localhost:3000
-@id = 2
+@id = 10
 
 # ============================================================================
 #    Entity: Coffee
@@ -30,7 +30,7 @@ Content-Type: application/json
 ####
 #### Selects all coffees with pagination
 #### 
-GET {{hostname}}/coffees?limit=50&offset=150 HTTP/1.1
+GET {{hostname}}/coffees?limit=2&offset=4 HTTP/1.1
 X-API-Key: 
 Content-Type: application/json
 
@@ -50,13 +50,75 @@ X-API-Key:
 Content-Type: application/json
 
 {
-    //"id": 2,
-    "name": "Cafe Caesar", 
+    "name": "Cafe Caesar # 55", 
     "brand": "Cafe Romano", 
-    "flavors": ["coffee", "maple", "syrup"]
-    //"isEnabled": true
+    "flavors": ["merengue", "coffee", "chocolate", "orange", "shite", "merda"]
 }
 
+####
+#### Create a new batch of coffees 
+#### 
+POST {{hostname}}/coffees HTTP/1.1
+X-API-Key: 
+Content-Type: application/json
+
+[  
+  {
+      "name": "Cafe Caesar # 1", 
+      "brand": "Cafe Romano", 
+      "flavors": ["coffee", "chocolate" ]
+  },
+  {
+      "name": "Cafe Caesar # 2", 
+      "brand": "Cafe Romano", 
+      "flavors": ["coffee" ]
+  },
+  {
+      "name": "Cafe Caesar # 3", 
+      "brand": "Cafe Romano", 
+      "flavors": ["coffee", "dark roast" ]
+  },
+    {
+      "name": "Cafe Caesar # 4", 
+      "brand": "Cafe Romano", 
+      "flavors": ["coffee", "torrefaction foncée" ]
+  },
+  {
+      "name": "Cafe Caesar # 5", 
+      "brand": "Cafe Romano", 
+      "flavors": ["coffee" ]
+  },
+  {
+      "name": "Cafe Caesar # 6", 
+      "brand": "Cafe Romano", 
+      "flavors": ["coffee", "orange" ]
+  },
+  {
+      "name": "Cafe African #1", 
+      "brand": "Africa Roast", 
+      "flavors": ["coffee", "kenyan" ]
+  },
+  {
+      "name": "Cafe African #2", 
+      "brand": "Africa Roast", 
+      "flavors": ["coffee", "ethiopia" ]
+  },
+  {
+      "name": "Cafe African #3", 
+      "brand": "Africa Roast", 
+      "flavors": ["coffee", "ethiopia", "kenyan" ]
+  },
+  { 
+      "name": "Cafe African #4", 
+      "brand": "Africa Roast", 
+      "flavors": ["coffee", "maple", "syrup" ]
+  },
+  {
+      "name": "Cafe African #5", 
+      "brand": "Africa Roast", 
+      "flavors": ["coffee", "southern", "croco", "maple" ]
+  }
+]
 ####
 #### Updates a new coffee 
 #### 
@@ -65,9 +127,11 @@ X-API-Key:
 Content-Type: application/json
 
 {
-    "name": "Cafe Caesar", 
-    "brand": "Cafe Romano", 
-    "flavors": ["coffee", "maple", "syrup"]
+    "flavors": [
+      "coffee",
+      "maple",
+      "orange"
+    ]
 }
 
 
