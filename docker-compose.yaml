@@ -2,18 +2,21 @@ version: "3"
 
 services:
   db:
-    container_name: iLuvCoffe_db
+    container_name: iLuvCoffe-db
     image: postgres
     restart: always
     ports: 
       - "5432:5432"
-    environment:
-      - POSTGRES_PASSWORD=pass123
+    env_file:
+      - .env
+    #environment:
+    #  - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      #- POSTGRES_PASSWORD=pass123
     networks:
       - iLuvCoffee
 
   pgadmin:
-    container_name: iLuvCoffe_pgadmin
+    container_name: iLuvCoffe-pgadmin
     image: dpage/pgadmin4:6.18
     networks:
       - iLuvCoffee
