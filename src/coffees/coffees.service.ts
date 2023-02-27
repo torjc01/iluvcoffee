@@ -39,7 +39,6 @@ export class CoffeesService {
             }
         });
         if(!coffee){
-            //throw new HttpException(`Coffee #${id} not found`, HttpStatus.NOT_FOUND);
             throw new NotFoundException(`Coffee #${id} not found`);
         }
         return coffee;
