@@ -58,6 +58,14 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## OmniDB
+
+[OmniDb](http://localhost:8000) 
+
+docker exec -it my_container python omnidb-server.py --createsuperuser=admin pass
+
+docker exec -it my_container python omnidb-server.py --createuser=myuser mypass
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).

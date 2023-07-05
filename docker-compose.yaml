@@ -1,0 +1,31 @@
+version: "3"
+
+services: 
+  db: 
+    container_name: iluvcoffee-db
+    image: postgres
+    restart: always 
+    ports: 
+      - "5432:5432"
+    networks:
+      - iluvcoffee
+    volumes:
+      - .data/postgres
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+  omniDb: 
+    container_name: iluvcoffee-omnidb
+    image: omnidbteam/omnidb:latest
+    restart: always
+    ports:
+      - "8000:8000"
+    networks:
+      - iluvcoffee
+    volumes:
+      - .data/omnidb:/etc/omnidb
+
+networks:
+  iluvcoffee:
+
+    
