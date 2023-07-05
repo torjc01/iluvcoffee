@@ -4,6 +4,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CoffeesModule } from './coffees/coffees.module';
 
+// Configurer dotenv
+const dotenv = require('dotenv');
+dotenv.config();
+
+// Configurer variables d'environnement
+const POSTGRES_PASSWORD            = process.env.POSTGRES_PASSWORD;
+
 @Module({
   imports:      [CoffeesModule, 
     TypeOrmModule.forRoot({
@@ -11,7 +18,7 @@ import { CoffeesModule } from './coffees/coffees.module';
       host: 'localhost', 
       port: 5432, 
       username: 'postgres', 
-      password: '', 
+      password: POSTGRES_PASSWORD, 
       database: 'postgres', 
       autoLoadEntities: true, 
       synchronize: true  // Disable when in production environment
