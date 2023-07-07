@@ -3,7 +3,9 @@ import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto } from './dto/create-coffee.dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto/update-coffee.dto';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto/pagination-query.dto';
+import { ApiForbiddenResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('coffees')
 @Controller('coffees')
 export class CoffeesController {
 
@@ -18,6 +20,7 @@ export class CoffeesController {
      * Mas como uma best practice, é recomendado o uso da sintaxe nativa NestJS para evitar perda de compatibilidade 
      * com objetos que não sejam compatíveis com a sintaxe das bibliotecas. 
      */
+    @ApiForbiddenResponse({ description: 'Proibido.'})
     @Get()
     findAll(@Query() paginationQuery: PaginationQueryDto){
         const { limit, offset } = paginationQuery;

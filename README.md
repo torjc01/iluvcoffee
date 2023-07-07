@@ -34,6 +34,14 @@ $ npm install
 
 ## Running the app
 
+
+Create a file on the root folder called `.env` and define the variables below: 
+
+```bash 
+POSTGRES_PASSWORD=
+```
+
+
 ```bash
 # development
 $ npm run start
